@@ -12,9 +12,12 @@
 //==========================================================================
 
 /*==========================================================================
- * $Header: /private-cvsroot/simulation/mrisim/src/mrisim/mrisimargs.h,v 1.1 2003-05-30 16:43:11 bert Exp $
+ * $Header: /private-cvsroot/simulation/mrisim/src/mrisim/mrisimargs.h,v 1.2 2004-08-10 15:39:07 bert Exp $
  * $Log: mrisimargs.h,v $
- * Revision 1.1  2003-05-30 16:43:11  bert
+ * Revision 1.2  2004-08-10 15:39:07  bert
+ * Add float.h
+ *
+ * Revision 1.1  2003/05/30 16:43:11  bert
  * Initial checkin, mrisim 3.1 from Remi Kwan's home directory
  *
  * Revision 3.0.1.1  1996/07/16  20:42:24  rkwan
@@ -39,6 +42,7 @@
 
 #include "mrisim.h"
 #include <limits.h>
+#include <float.h>
 
 extern "C" {
 #include "ParseArgv.h"
