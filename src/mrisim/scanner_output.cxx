@@ -9,9 +9,16 @@
 //==========================================================================
 
 //==========================================================================
-// $Header: /private-cvsroot/simulation/mrisim/src/mrisim/scanner_output.cxx,v 1.1 2003-05-30 16:43:12 bert Exp $
+// $Header: /private-cvsroot/simulation/mrisim/src/mrisim/scanner_output.cxx,v 1.2 2003-06-11 11:36:05 crisco Exp $
 // $Log: scanner_output.cxx,v $
-// Revision 1.1  2003-05-30 16:43:12  bert
+// Revision 1.2  2003-06-11 11:36:05  crisco
+//
+// bug fix: the phase output image should not be multiplied by the gain!
+//
+// this was not a problem for Brainweb, because the 'phase' output type
+// is not currently offered as an option ... but from now on it could be.
+//
+// Revision 1.1  2003/05/30 16:43:12  bert
 // Initial checkin, mrisim 3.1 from Remi Kwan's home directory
 //
 // Revision 3.1  1996/07/19  19:32:35  rkwan
@@ -212,7 +219,11 @@ void Scanner_Output::save_images(const mrisimArgs &args,
                break;
          }
 
-         _image.scale(scanner.get_signal_gain());
+	 // [CC, 11.06.2003] 
+	 // multiplication with gain doesn't make sense for the phase 
+	 if (_output_type != IMAGE_P) 
+	   _image.scale(scanner.get_signal_gain());
+
          _output.save_slice(islice, _image);
          if (args.verboseFlag)
             cout << "." << flush;
