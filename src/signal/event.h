@@ -14,9 +14,12 @@
  *
  *****************************************************************************/
 
-/* $Header: /private-cvsroot/simulation/mrisim/src/signal/event.h,v 1.1 2003-05-30 16:43:12 bert Exp $
+/* $Header: /private-cvsroot/simulation/mrisim/src/signal/event.h,v 1.2 2004-08-10 15:39:41 bert Exp $
  * $Log: event.h,v $
- * Revision 1.1  2003-05-30 16:43:12  bert
+ * Revision 1.2  2004-08-10 15:39:41  bert
+ * Add 'class' keyword to friend declaration
+ *
+ * Revision 1.1  2003/05/30 16:43:12  bert
  * Initial checkin, mrisim 3.1 from Remi Kwan's home directory
  *
  * Revision 2.2  1995/12/11  14:23:12  rkwan
@@ -63,7 +66,7 @@ class Event {
       void    set_event_id(int event_id);
       void    set_event_type(int event_type);
 
-      friend  Custom_Sequence;
+      friend  class Custom_Sequence;
 
    protected:
       Time_ms _event_time;                 // time stamp of event
