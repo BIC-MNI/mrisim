@@ -9,9 +9,12 @@
 //==========================================================================
 
 //==========================================================================
-// $Header: /private-cvsroot/simulation/mrisim/src/mrisim/mrisim_main.cxx,v 1.1 2003-05-30 16:43:11 bert Exp $
+// $Header: /private-cvsroot/simulation/mrisim/src/mrisim/mrisim_main.cxx,v 1.2 2004-08-10 15:37:38 bert Exp $
 // $Log: mrisim_main.cxx,v $
-// Revision 1.1  2003-05-30 16:43:11  bert
+// Revision 1.2  2004-08-10 15:37:38  bert
+// Fix two bugs and a warning
+//
+// Revision 1.1  2003/05/30 16:43:11  bert
 // Initial checkin, mrisim 3.1 from Remi Kwan's home directory
 //
 // Revision 3.1  1996/07/19  15:58:33  rkwan
@@ -85,7 +88,7 @@ int main(int argc, char *argv[]){
    output.save_images(args, scanner);
 
    // --- CLEAN UP --- //
-   free(time_stamp);
+   free(stamp);
 
    return 0;
 
@@ -173,7 +176,7 @@ Phantom *open_phantom(const mrisimArgs& args, const RF_Coil *rf_coil) {
    char label_file_name[255];
 
    char         tissue_name[255];
-   Tissue_Label tissue_label;
+   int          tissue_label;
    double       T1, T2, T2s, NH;
 
    // --- Read phantom tissue description parameters --- //
@@ -317,7 +320,7 @@ Phantom *open_phantom(const mrisimArgs& args, const RF_Coil *rf_coil) {
 
       // Do not install tissues with 0 proton density if they are not
       // background (tissue_label of 0)
-      if (NH != 0.0 || tissue_label == 0){
+      if (NH != 0.0 || tissue_label == 0 || tissue_label == 7){
 
          // Install tissue parameters in phantom
          phantom->install_tissue(new Tissue(tissue_name,T1,T2,T2s,NH),
