@@ -9,9 +9,12 @@
 //==========================================================================
 
 //==========================================================================
-// $Header: /private-cvsroot/simulation/mrisim/src/minc/mincfile.cxx,v 1.1 2003-05-30 16:43:09 bert Exp $
+// $Header: /private-cvsroot/simulation/mrisim/src/minc/mincfile.cxx,v 1.2 2004-08-10 15:20:17 bert Exp $
 // $Log: mincfile.cxx,v $
-// Revision 1.1  2003-05-30 16:43:09  bert
+// Revision 1.2  2004-08-10 15:20:17  bert
+// Comment out obsolete NC_xxx types
+//
+// Revision 1.1  2003/05/30 16:43:09  bert
 // Initial checkin, mrisim 3.1 from Remi Kwan's home directory
 //
 // Revision 2.5  1996/05/29  16:22:15  rkwan
@@ -446,6 +449,7 @@ int MINC_File::get_variable_type(const char *varname, char *type_name) const {
       case NC_DOUBLE:
          strcpy(type_name,"double");
          break;
+#if 0                           // These are obsolete.
       case NC_BITFIELD:
       case NC_STRING:
       case NC_IARRAY:
@@ -453,6 +457,7 @@ int MINC_File::get_variable_type(const char *varname, char *type_name) const {
       case NC_VARIABLE:
       case NC_ATTRIBUTE:
       case NC_UNSPECIFIED:
+#endif
       default:
          strcpy(type_name,"unspecified or private type");
          break;

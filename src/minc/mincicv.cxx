@@ -12,9 +12,12 @@
 //==========================================================================
 
 //==========================================================================
-// $Header: /private-cvsroot/simulation/mrisim/src/minc/mincicv.cxx,v 1.1 2003-05-30 16:43:09 bert Exp $
+// $Header: /private-cvsroot/simulation/mrisim/src/minc/mincicv.cxx,v 1.2 2004-08-10 15:23:50 bert Exp $
 // $Log: mincicv.cxx,v $
-// Revision 1.1  2003-05-30 16:43:09  bert
+// Revision 1.2  2004-08-10 15:23:50  bert
+// Comment out obsolete NC_xxx types
+//
+// Revision 1.1  2003/05/30 16:43:09  bert
 // Initial checkin, mrisim 3.1 from Remi Kwan's home directory
 //
 // Revision 2.5  1996/05/29  16:27:52  rkwan
@@ -94,6 +97,7 @@ const char *MINC_ICV::get_icv_type_name(void) {
       case NC_DOUBLE:
          return_value = type[5];
          break;
+#if 0                           // Obsolete
       case NC_BITFIELD:
       case NC_STRING:
       case NC_IARRAY:
@@ -103,6 +107,7 @@ const char *MINC_ICV::get_icv_type_name(void) {
       case NC_UNSPECIFIED:
          return_value = type[6];
          break;
+#endif /* 0 */
       default:
          return_value = type[7];
          break;
