@@ -1,0 +1,13 @@
+Originally authored in 1996 by Remi K.S. Kwan.
+
+Maintenance and autoconfigure suppory by Bert Vincent (bert@bic.mni.mcgill.ca)
+
+For additional information, see the following publications:
+
+R. K.-S. Kwan, A.C. Evans, G.B. Pike, "MRI simulation-based evaluation of
+image-processing and classification methods", IEEE Transactions on Medical
+Imaging. 18(11):1085-97, Nov 1999.
+
+R. K.-S. Kwan, A.C. Evans, G.B. Pike, "An Extensible MRI Simulator for
+Post-Processing Evaluation" Visualization in Biomedical Computing (VBC '96).
+Lecture Notes in Computer Science, vol. 1131, Springer-Verlag, 1996 135-140.
