@@ -12,9 +12,12 @@
 //==========================================================================
 
 /*==========================================================================
- * $Header: /private-cvsroot/simulation/mrisim/src/minc/omincfile.h,v 1.1 2003-05-30 16:43:10 bert Exp $
+ * $Header: /private-cvsroot/simulation/mrisim/src/minc/omincfile.h,v 1.2 2004-08-10 15:35:55 bert Exp $
  * $Log: omincfile.h,v $
- * Revision 1.1  2003-05-30 16:43:10  bert
+ * Revision 1.2  2004-08-10 15:35:55  bert
+ * Add 'class' keyword to friend declarations
+ *
+ * Revision 1.1  2003/05/30 16:43:10  bert
  * Initial checkin, mrisim 3.1 from Remi Kwan's home directory
  *
  * Revision 2.5  1996/05/29  16:29:25  rkwan
@@ -40,7 +43,7 @@ class I_MINC_File;
 //--------------------------------------------------------------------------
 
 class O_MINC_File : virtual public MINC_File {
-   friend I_MINC_File;
+   friend class I_MINC_File;
    public:
       O_MINC_File();
 

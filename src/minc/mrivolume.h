@@ -11,9 +11,12 @@
 //===========================================================================
 
 /*===========================================================================
- * $Header: /private-cvsroot/simulation/mrisim/src/minc/mrivolume.h,v 1.1 2003-05-30 16:43:09 bert Exp $
+ * $Header: /private-cvsroot/simulation/mrisim/src/minc/mrivolume.h,v 1.2 2004-08-10 15:35:37 bert Exp $
  * $Log: mrivolume.h,v $
- * Revision 1.1  2003-05-30 16:43:09  bert
+ * Revision 1.2  2004-08-10 15:35:37  bert
+ * Add 'class' keyword to friend declarations
+ *
+ * Revision 1.1  2003/05/30 16:43:09  bert
  * Initial checkin, mrisim 3.1 from Remi Kwan's home directory
  *
  * Revision 2.5  1996/05/29  16:28:55  rkwan
@@ -156,9 +159,9 @@ class MRI_Byte_Volume : public MRI_Volume {
       void display(ostream& stream);
 
    protected:
-      friend MRI_Short_Volume;
-      friend MRI_Float_Volume;
-      friend MRI_Double_Volume;
+      friend class MRI_Short_Volume;
+      friend class MRI_Float_Volume;
+      friend class MRI_Double_Volume;
   
       unsigned char *_volume;
   
@@ -227,9 +230,9 @@ class MRI_Short_Volume : public MRI_Volume {
       void display(ostream& stream);
 
    protected:
-      friend MRI_Byte_Volume;
-      friend MRI_Float_Volume;
-      friend MRI_Double_Volume;
+      friend class MRI_Byte_Volume;
+      friend class MRI_Float_Volume;
+      friend class MRI_Double_Volume;
 
       short *_volume;
 
@@ -307,10 +310,10 @@ class MRI_Float_Volume : public MRI_Volume {
       void display(ostream& stream);
 
    protected:
-      friend MRI_Byte_Volume;
-      friend MRI_Short_Volume;
-      friend MRI_Double_Volume;
-      friend MRI_Complex_Volume;
+      friend class MRI_Byte_Volume;
+      friend class MRI_Short_Volume;
+      friend class MRI_Double_Volume;
+      friend class MRI_Complex_Volume;
 
       float *_volume;
   
@@ -386,10 +389,10 @@ class MRI_Double_Volume : public MRI_Volume {
       void display(ostream& stream);
 
    protected:
-      friend MRI_Byte_Volume;
-      friend MRI_Short_Volume;
-      friend MRI_Float_Volume;
-      friend MRI_Complex_Volume;
+      friend class MRI_Byte_Volume;
+      friend class MRI_Short_Volume;
+      friend class MRI_Float_Volume;
+      friend class MRI_Complex_Volume;
 
       double *_volume;
   
