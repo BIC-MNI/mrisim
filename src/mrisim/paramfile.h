@@ -12,9 +12,12 @@
 //==========================================================================
 
 /*==========================================================================
- * $Header: /private-cvsroot/simulation/mrisim/src/mrisim/paramfile.h,v 1.1 2003-05-30 16:43:11 bert Exp $
+ * $Header: /private-cvsroot/simulation/mrisim/src/mrisim/paramfile.h,v 1.2 2004-08-10 15:38:05 bert Exp $
  * $Log: paramfile.h,v $
- * Revision 1.1  2003-05-30 16:43:11  bert
+ * Revision 1.2  2004-08-10 15:38:05  bert
+ * Add iostream.h
+ *
+ * Revision 1.1  2003/05/30 16:43:11  bert
  * Initial checkin, mrisim 3.1 from Remi Kwan's home directory
  *
  * Revision 3.1  1996/07/19  16:05:02  rkwan
@@ -27,7 +30,7 @@
  * Doc update.
  *
  *========================================================================*/
-
+#include <iostream.h>
 #include <fstream.h>
 
 //--------------------------------------------------------------------------
