@@ -8,9 +8,12 @@
 //===========================================================================
 
 //===========================================================================
-// $Header: /private-cvsroot/simulation/mrisim/src/minc/mrimatrix.cxx,v 1.1 2003-05-30 16:43:09 bert Exp $
+// $Header: /private-cvsroot/simulation/mrisim/src/minc/mrimatrix.cxx,v 1.2 2004-08-10 15:24:19 bert Exp $
 // $Log: mrimatrix.cxx,v $
-// Revision 1.1  2003-05-30 16:43:09  bert
+// Revision 1.2  2004-08-10 15:24:19  bert
+// Use atan2 rather than fatan2
+//
+// Revision 1.1  2003/05/30 16:43:09  bert
 // Initial checkin, mrisim 3.1 from Remi Kwan's home directory
 //
 // Revision 3.1  1996/07/19  15:48:37  rkwan
@@ -2324,7 +2327,7 @@ void MRI_FComplex_Matrix::angle(MRI_Float_Matrix& mat) const {
 #endif
 
    for(n=0; n<len; n++){
-      mat._matrix[n] = fatan2(_matrix[2*n+1], _matrix[2*n]);
+      mat._matrix[n] = (float) atan2(_matrix[2*n+1], _matrix[2*n]);
    }
 
 }
@@ -2426,8 +2429,8 @@ void MRI_FComplex_Matrix::get_angle_min_max(double &min, double &max) const {
    unsigned int n, len = this->get_nelements();
 
    for (n=0; n<2*len; n+=4){
-      tmp1 = fatan2(_matrix[n+1], _matrix[n]);
-      tmp2 = fatan2(_matrix[n+3], _matrix[n+2]);
+      tmp1 = atan2(_matrix[n+1], _matrix[n]);
+      tmp2 = atan2(_matrix[n+3], _matrix[n+2]);
       if (tmp2 < tmp1){
          swap = tmp1; tmp1 = tmp2; tmp2 = swap;
       }
@@ -2435,7 +2438,7 @@ void MRI_FComplex_Matrix::get_angle_min_max(double &min, double &max) const {
       if (tmp2 > max) max = tmp2;
    }
    if (!(len % 2)) { // if number of elements is odd
-      tmp1 = fatan2(_matrix[2*len-1], _matrix[2*len-2]);
+      tmp1 = atan2(_matrix[2*len-1], _matrix[2*len-2]);
       if (tmp1 < min) min = tmp1;
       if (tmp1 > max) max = tmp1;
    }
