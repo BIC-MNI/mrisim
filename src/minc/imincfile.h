@@ -12,9 +12,12 @@
 //==========================================================================
 
 /*==========================================================================
- * $Header: /private-cvsroot/simulation/mrisim/src/minc/imincfile.h,v 1.1 2003-05-30 16:43:08 bert Exp $
+ * $Header: /private-cvsroot/simulation/mrisim/src/minc/imincfile.h,v 1.2 2004-08-10 15:19:59 bert Exp $
  * $Log: imincfile.h,v $
- * Revision 1.1  2003-05-30 16:43:08  bert
+ * Revision 1.2  2004-08-10 15:19:59  bert
+ * Add 'class' keyword
+ *
+ * Revision 1.1  2003/05/30 16:43:08  bert
  * Initial checkin, mrisim 3.1 from Remi Kwan's home directory
  *
  * Revision 2.5  1996/05/29  16:26:40  rkwan
@@ -37,7 +40,7 @@ class MRI_Image;
 //--------------------------------------------------------------------------
 
 class I_MINC_File : virtual public MINC_File {
-   friend O_MINC_File;
+   friend class O_MINC_File;
    public:
       I_MINC_File();
 
