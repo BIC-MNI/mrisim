@@ -1,0 +1,8 @@
+In addition to the files prob_bkg_53.mnc.gz and avgbrain.prm, this
+directory originally contained the following symlinks:
+
+prob_csf_53.mnc.gz   -> /data/avgbrain1/brain/images/prob_csf_53.mnc.gz
+prob_grey_53.mnc.gz  -> /data/avgbrain1/brain/images/prob_grey_53.mnc.gz
+prob_white_53.mnc.gz -> /data/avgbrain1/brain/images/prob_white_53.mnc.gz
+
+

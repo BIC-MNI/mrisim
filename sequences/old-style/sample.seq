@@ -1,0 +1,20 @@
+SLICE_THICKNESS (mm)
+5.0
+ROW_SIZE (mm)
+1.0
+COLUMN_SIZE (mm)
+1.0
+NEX
+1
+Sampling Period (us)
+8
+TYPE  (0=SE  1=Spoiled FLASH 2=IR 3=CE-FAST 4=FISP 5=FLASH)
+0
+TR (ms)
+2864
+TE (ms)  
+120
+TI (ms)
+0
+FLIP (degrees)
+90

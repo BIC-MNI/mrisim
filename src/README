@@ -1,0 +1,60 @@
+This directory contains source code for mrisim.  It has been tested with
+the Silicon Graphics Delta C++ compiler (IRIX 5.3).   To build the source
+cd into the directory mrisim, then make mrisim.
+
+Release 3.1
+-----------
+
+New partial volume scheme:
+A new partial volume scheme which uses Fourier resampling to model imaging
+chain partial volume has been introduced.  This is now the default method.
+To use the old method, the -nnpv switch has been added.
+
+New command-line interface:
+The command-line interface has been expanded to allow for new parameters
+that have been introduced into the parameter files.
+See the man page, and the document mrisim/doc/switch.txt.gz for a full
+description of command-line options.
+
+Release 3.0
+-----------
+
+Fuzzy label phantoms:
+MRISIM now accepts fuzzy phantoms for the specification of anatomic
+partial volume.
+
+New parameter files:
+The parameter file format has been changed to allow for new release
+features.  Scripts files new-sequence, new-tissue, and new-coil are
+available for generating new parameter files from the old ones.
+
+Release 2.5
+-----------
+
+The Phantom model has been rewritten to be more memory efficient and to
+accomodate new models in future releases.
+
+Changes / New Features:
+
+RF Inhomogeneity:
+The receive coil field map should now have the same size as the labelled
+phantom volume.  Receive map resampling is now done by the simulator.
+
+Signal Gain:
+A -gain command line switch has been added to allow a user specified
+signal gain for the output volumes.
+
+Voxel Offset:
+An arbitrary voxel offset from the labelled phantom, for each dimension of
+the output volume can now be specified.  If no offset is specified, the
+quarter voxel shift used in previous releases is used by default.
+now be specified
+
+See the man page for details.
+
+Release 2.0
+-----------
+
+There have been changes and restructuring in the code distribution.
+This release has been tested with the Silicon Graphics Delta C++ compiler,
+as well as GNU C++ (v2.4).   

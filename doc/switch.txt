@@ -1,0 +1,159 @@
+MRISIM command-line interface specifications
+============================================
+
+Author:  R. Kwan (rkwan@nil.mni.mcgill.ca)
+Date:    July 11, 1996
+Version: mrisim 3.0.2
+
+Notation 
+--------
+
+Parameters are shown within angle-brackets, eg. <this-is-a-parameter>.
+Optional parameters are shown with square brackets, eg. [<this-is-optional>].
+
+
+Phantom related switches
+------------------------
+
+-tissue <tissue-parameter-file>
+
+Specifies the tissue parameter file that describes the characteristics 
+of each tissue (T1, T2, T2*, NH) and its class label.   The default
+discrete or fuzzy phantom filenames for each tissue class are taken from
+this tissue-parameter-file.
+
+-discrete [<discrete-phantom-file>]
+
+Specifies that a discrete phantom is to be used.   Optionally uses the
+named discrete phantom file.   If a phantom file is not given the
+default file specified by the tissue-parameter-file is used.
+
+-fuzzy [<fuzzy-phantom-file-1>:<label-1>,...,<fuzzy-phantom-file-N>:<label-N>]
+
+Specifies that a fuzzy phantom is to be used.  Optionally includes a 
+comma-delimited list of fuzzy phantom specifiers.  Each fuzzy phantom 
+specifier is a fuzzy phantom filename followed by a colon (':') followed
+by a class label that corresponds to the tissue label given in the 
+tissue-parameter-file.
+
+If fuzzy phantom files are not given, the default files specified by the 
+tissue-parameter-file are used.
+
+
+RF Coil related switches
+------------------------
+
+-coil <coil-parameter-file>
+
+Specifies the RF coil model parameter file.
+
+-rxmap [<rf-coil-receive-map>]
+
+Specifies that signal reception RF inhomogeneity is to be modelled.
+Optionally uses the named RF inhomogeneity field map file.   If no field
+map file is given, the file named in the coil-parameter-file is used
+by default.
+
+*** Note:  change to -rxmap from previous -rfmap switch.
+
+-txmap [<rf-coil-transmit-map>]
+
+Specifies that signal transmission RF inhomogeneity is to be modelled.
+Optionally uses the named RF inhomogeneity field map file.  If no field
+map file is given, the file named in the coil-parameter-file is used
+by default.
+
+
+Pulse Sequence related switches
+-------------------------------
+
+-sequence <pulse-sequence-file>
+
+Specifies the Pulse Sequence model parameter file that defines default
+parameter values.  These values may be overridden by the following
+optional command line switches.
+
+-gain <output-image-gain>
+
+Specifies a signal gain multiplier to be used when writing output images.
+Default value: 10000.
+
+-voxel_offset <z-offset-mm> <y-offset-mm> <x-offset-mm>
+
+Specifies the voxel offset of the simulated image (mm) in (z y x) order.
+The voxel offset is relative to the phantom.  For old-style quarter-voxel 
+shift resampling use -old_offset.
+
+-recon_matrix <recon-size>
+
+Specifies the size of the square reconstructed output image matrix.
+This must be one of 64, 128, 256, or 512.  
+
+-scan_matrix <matrix-size>
+
+Specifies the size of the acquisition matrix.
+This must be one of 64, 128, 256, or 512.  
+
+-voxel_dims <z-step-mm> <y-step-mm> <x-step-mm>
+
+Specifies the dimensions of output image voxels (mm) in (z y x) order.
+By default the slice thickness and slice separation of the output image
+is set to <z-step-mm>, if a different slice thickness is required this
+can be overridden with the -slice_thickness switch.
+
+-slice_thickness <slice-thickness-mm>
+
+Specifies the slice the slice thickness to use in mm.  Note that this
+is not the same as the slice separation specified with -voxel_dims as
+the parameter <z-step-mm>.
+
+-nslices <number-of-slices>
+
+Specifies the number of output slices to generate.
+
+-nnpv 
+
+Use old nearest-neighbour partial volume evaluation instead of Fourier
+resampling technique.
+
+-old_offset
+
+Use old quarter-voxel shift offset when resampling.
+
+
+Log information switches
+------------------------
+
+-logfile [<log-file>]
+
+Specifies the log-file to create.  If no file is given defaults to
+mrisim.log.
+
+-verbose
+
+Print out log messages (default).
+
+-quiet
+
+Do not print out log messages.
+
+
+Miscellaneous switches
+----------------------
+
+-clobber
+
+Overwrite output files.
+
+-noclobber
+
+Do not overwrite output files (default).
+
+-version
+
+Returns version information and exits.
+
+-help
+
+Prints a summary of command-line options and exits.
+

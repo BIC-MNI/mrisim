@@ -1,0 +1,12 @@
+Intrinsic SNR (-1 for no noise)
+3500
+Inhomogeneity file
+none
+Percent Noise (0..100)
+15 @ 5 12
+Image SNR
+80
+Random Seed (auto generate = 'auto')
+auto
+Noise Model (0=Noiseless, 1=Intrinsic SNR, 2=Percent Noise, 3=Image SNR)
+2
