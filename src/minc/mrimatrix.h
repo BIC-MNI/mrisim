@@ -13,9 +13,12 @@
 //===========================================================================
 
 /*===========================================================================
- * $Header: /private-cvsroot/simulation/mrisim/src/minc/mrimatrix.h,v 1.1 2003-05-30 16:43:09 bert Exp $
+ * $Header: /private-cvsroot/simulation/mrisim/src/minc/mrimatrix.h,v 1.2 2004-08-10 15:35:14 bert Exp $
  * $Log: mrimatrix.h,v $
- * Revision 1.1  2003-05-30 16:43:09  bert
+ * Revision 1.2  2004-08-10 15:35:14  bert
+ * Add 'class' keyword to friend declarations, use atan2() rather than fatan2()
+ *
+ * Revision 1.1  2003/05/30 16:43:09  bert
  * Initial checkin, mrisim 3.1 from Remi Kwan's home directory
  *
  * Revision 3.1  1996/07/19  15:48:29  rkwan
@@ -36,6 +39,7 @@
 #include <iostream.h>
 #include <iomanip.h>
 #include <limits.h>
+#include <float.h>
 #include <string.h>
 #include "fourn.h"
 
@@ -240,12 +244,12 @@ class MRI_Byte_Matrix : public MRI_Matrix {
          delete[] _matrix; }
       
    private:
-      friend MRI_Short_Matrix;
-      friend MRI_Float_Matrix;
-      friend MRI_Double_Matrix;
-      friend MRI_FComplex_Matrix;
-      friend MRI_Complex_Matrix;
-      friend MRI_Label;
+      friend class MRI_Short_Matrix;
+      friend class MRI_Float_Matrix;
+      friend class MRI_Double_Matrix;
+      friend class MRI_FComplex_Matrix;
+      friend class MRI_Complex_Matrix;
+      friend class MRI_Label;
 
 };
 
@@ -359,13 +363,13 @@ class MRI_Short_Matrix : public MRI_Matrix {
          delete[] _matrix; }
 
    private:     
-      friend MRI_Byte_Matrix;
-      friend MRI_Float_Matrix;
-      friend MRI_Double_Matrix;
-      friend MRI_FComplex_Matrix;
-      friend MRI_Complex_Matrix;
-      friend MRI_Label;
-      friend MRI_Image;
+      friend class MRI_Byte_Matrix;
+      friend class MRI_Float_Matrix;
+      friend class MRI_Double_Matrix;
+      friend class MRI_FComplex_Matrix;
+      friend class MRI_Complex_Matrix;
+      friend class MRI_Label;
+      friend class MRI_Image;
 };
 
 //===========================================================================
@@ -484,13 +488,13 @@ class MRI_Float_Matrix : public MRI_Matrix {
          delete[] _matrix; }
 
    private:
-      friend MRI_Byte_Matrix;
-      friend MRI_Short_Matrix;
-      friend MRI_Double_Matrix;
-      friend MRI_FComplex_Matrix;
-      friend MRI_Complex_Matrix;
-      friend MRI_Label;
-      friend MRI_Image;
+      friend class MRI_Byte_Matrix;
+      friend class MRI_Short_Matrix;
+      friend class MRI_Double_Matrix;
+      friend class MRI_FComplex_Matrix;
+      friend class MRI_Complex_Matrix;
+      friend class MRI_Label;
+      friend class MRI_Image;
 };
 
 //===========================================================================
@@ -609,13 +613,13 @@ class MRI_Double_Matrix : public MRI_Matrix {
          delete[] _matrix; }
 
    private:
-      friend MRI_Byte_Matrix;
-      friend MRI_Short_Matrix;
-      friend MRI_Float_Matrix;
-      friend MRI_FComplex_Matrix;
-      friend MRI_Complex_Matrix;
-      friend MRI_Label;
-      friend MRI_Image;
+      friend class MRI_Byte_Matrix;
+      friend class MRI_Short_Matrix;
+      friend class MRI_Float_Matrix;
+      friend class MRI_FComplex_Matrix;
+      friend class MRI_Complex_Matrix;
+      friend class MRI_Label;
+      friend class MRI_Image;
 };
 
 //===========================================================================
@@ -716,7 +720,7 @@ class MRI_FComplex_Matrix : public MRI_Matrix {
       float  abs(unsigned int row, unsigned int col) const {
          return hypotf(real(row,col), imag(row,col)); }
       float  angle(unsigned int row, unsigned int col) const {
-         return fatan2(real(row,col), imag(row,col)); }
+         return (float) atan2(real(row,col), imag(row,col)); }
 
       void display(ostream& stream) const;
 
@@ -734,7 +738,7 @@ class MRI_FComplex_Matrix : public MRI_Matrix {
          delete[] _matrix; }
 
    private:
-      friend MRI_Complex_Matrix;
+      friend class MRI_Complex_Matrix;
 
 };
 
