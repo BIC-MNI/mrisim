@@ -9,9 +9,12 @@
 //==========================================================================
 
 //==========================================================================
-// $Header: /private-cvsroot/simulation/mrisim/src/mrisim/scanner_output.cxx,v 1.2 2003-06-11 11:36:05 crisco Exp $
+// $Header: /private-cvsroot/simulation/mrisim/src/mrisim/scanner_output.cxx,v 1.3 2004-08-10 15:42:19 bert Exp $
 // $Log: scanner_output.cxx,v $
-// Revision 1.2  2003-06-11 11:36:05  crisco
+// Revision 1.3  2004-08-10 15:42:19  bert
+// Fix a warning and avoid use of nonstandard ios::nocreate bit
+//
+// Revision 1.2  2003/06/11 11:36:05  crisco
 //
 // bug fix: the phase output image should not be multiplied by the gain!
 //
@@ -148,8 +151,8 @@ void Scanner_Output::display_info(const mrisimArgs &args,
       cout << "--------------------------" << endl << endl;
       _output.display_volume_info(cout);
    if (args.logFlag){
-      ofstream logfile((((char *)args.logFile[0] == '\0') ? 
-                       "mrisim.log" : (char *)args.logFile));
+      ofstream logfile(((args.logFile[0] == '\0') ? 
+                       "mrisim.log" : args.logFile));
       logfile << time_stamp << endl << endl;
       scanner.display_info(logfile);
       logfile << "Creating Output MINC file:" << endl;
@@ -242,7 +245,7 @@ void Scanner_Output::save_images(const mrisimArgs &args,
 
 int Scanner_Output::file_exists(const char *path) const {
    int exist;
-   ofstream tmp(path, ios::out | ios::nocreate);
+   ofstream tmp(path, ios::in);
    if (!tmp){
       exist = 0;
    } else {
