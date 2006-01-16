@@ -4,7 +4,9 @@ AC_CONFIG_AUX_DIR(ac_config_aux)
 AM_INIT_AUTOMAKE(mrisim, 1.0.0)
 AM_CONFIG_HEADER([config.h])
 
-AC_REVISION($Revision: 1.2 $)
+AC_REVISION($Revision: 1.3 $)
+
+AC_PROG_LIBTOOL
 
 AC_PROG_INSTALL
 AC_PROG_LN_S
