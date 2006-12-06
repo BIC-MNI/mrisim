@@ -1,3 +1,7 @@
+New in version 1.0.1
+--------------------
+	* added epm-header.in for binary builds
+
 New in version 1.0.0
 --------------------
-Autoconf/Automake support
+	* Autoconf/Automake support

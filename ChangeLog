@@ -1,2 +1,6 @@
+2006-11-07	Andrew L Janke	<a.janke@gmail.com>
+	* Added epm-header for binary build
+
+
 2005-05-04	Bert Vincent	<bert@bic.mni.mcgill.ca>
 	* Small modifications to the build process

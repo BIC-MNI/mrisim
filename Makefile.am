@@ -15,7 +15,8 @@ EXTRA_DIST = $(m4_files) \
 	$(coil_files) \
 	$(doc_files) \
 	$(field_files) \
-	$(sequence_files)
+	$(sequence_files) \
+	epm-header.in
 
 m4_files = \
 	m4/mni_REQUIRE_LIB.m4 \

@@ -1,0 +1,9 @@
+%product mrisim
+%copyright 1993-2005 Remi Kwan
+%vendor McConnell Brain Imaging Centre
+%packager Andrew Janke <a.janke@gmail.com>
+%license COPYING
+%readme README
+%description MRI simulator for MINC
+%version @VERSION@
+%requires minc
