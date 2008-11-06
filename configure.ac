@@ -1,10 +1,10 @@
 AC_INIT
 AC_CONFIG_SRCDIR([src/mrisim/mrisim.h])
 AC_CONFIG_AUX_DIR(ac_config_aux)
-AM_INIT_AUTOMAKE(mrisim, 1.0.2)
+AM_INIT_AUTOMAKE(mrisim, 1.0.3)
 AM_CONFIG_HEADER([config.h])
 
-AC_REVISION($Revision: 1.5 $)
+AC_REVISION($Revision: 1.6 $)
 
 AC_PROG_LIBTOOL
 
