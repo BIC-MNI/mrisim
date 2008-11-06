@@ -9,9 +9,13 @@
 //==========================================================================
 
 //==========================================================================
-// $Header: /private-cvsroot/simulation/mrisim/src/minc/imincfile.cxx,v 1.1 2003-05-30 16:43:08 bert Exp $
+// $Header: /private-cvsroot/simulation/mrisim/src/minc/imincfile.cxx,v 1.2 2008-11-06 10:58:22 rotor Exp $
 // $Log: imincfile.cxx,v $
-// Revision 1.1  2003-05-30 16:43:08  bert
+// Revision 1.2  2008-11-06 10:58:22  rotor
+//  * fixed includes for iostream and friends
+//  * updated for new release (1.0.2)
+//
+// Revision 1.1  2003/05/30 16:43:08  bert
 // Initial checkin, mrisim 3.1 from Remi Kwan's home directory
 //
 // Revision 2.5  1996/05/29  16:26:48  rkwan
@@ -28,7 +32,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#include <iostream.h>
+#include <iostream>
 
 #include "imincfile.h"
 #include "mriimage.h"

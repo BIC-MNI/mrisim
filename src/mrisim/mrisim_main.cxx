@@ -9,9 +9,13 @@
 //==========================================================================
 
 //==========================================================================
-// $Header: /private-cvsroot/simulation/mrisim/src/mrisim/mrisim_main.cxx,v 1.2 2004-08-10 15:37:38 bert Exp $
+// $Header: /private-cvsroot/simulation/mrisim/src/mrisim/mrisim_main.cxx,v 1.3 2008-11-06 10:58:23 rotor Exp $
 // $Log: mrisim_main.cxx,v $
-// Revision 1.2  2004-08-10 15:37:38  bert
+// Revision 1.3  2008-11-06 10:58:23  rotor
+//  * fixed includes for iostream and friends
+//  * updated for new release (1.0.2)
+//
+// Revision 1.2  2004/08/10 15:37:38  bert
 // Fix two bugs and a warning
 //
 // Revision 1.1  2003/05/30 16:43:11  bert
@@ -37,9 +41,9 @@
 //
 //==========================================================================
 
-#include <iostream.h>
-#include <iomanip.h>
-#include <fstream.h>
+#include <iostream>
+#include <iomanip>
+#include <fstream>
 #include <string.h>
 #include <ctype.h>
 

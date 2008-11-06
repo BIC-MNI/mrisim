@@ -1,3 +1,8 @@
+
+New in version 1.0.2
+--------------------
+	* build fixes for C++ includes
+
 New in version 1.0.1
 --------------------
 	* added epm-header.in for binary builds

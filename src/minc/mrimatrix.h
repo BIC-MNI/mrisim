@@ -13,9 +13,13 @@
 //===========================================================================
 
 /*===========================================================================
- * $Header: /private-cvsroot/simulation/mrisim/src/minc/mrimatrix.h,v 1.2 2004-08-10 15:35:14 bert Exp $
+ * $Header: /private-cvsroot/simulation/mrisim/src/minc/mrimatrix.h,v 1.3 2008-11-06 10:58:23 rotor Exp $
  * $Log: mrimatrix.h,v $
- * Revision 1.2  2004-08-10 15:35:14  bert
+ * Revision 1.3  2008-11-06 10:58:23  rotor
+ *  * fixed includes for iostream and friends
+ *  * updated for new release (1.0.2)
+ *
+ * Revision 1.2  2004/08/10 15:35:14  bert
  * Add 'class' keyword to friend declarations, use atan2() rather than fatan2()
  *
  * Revision 1.1  2003/05/30 16:43:09  bert
@@ -36,12 +40,14 @@
  *=========================================================================*/
 
 #include <math.h>
-#include <iostream.h>
-#include <iomanip.h>
+#include <iostream>
+#include <iomanip>
 #include <limits.h>
 #include <float.h>
 #include <string.h>
 #include "fourn.h"
+
+using namespace std;
 
 #ifdef DEBUG
 #include <assert.h>

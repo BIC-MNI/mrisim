@@ -12,9 +12,13 @@
 //==========================================================================
 
 /*==========================================================================
- * $Header: /private-cvsroot/simulation/mrisim/src/mrisim/mriscanner.h,v 1.1 2003-05-30 16:43:11 bert Exp $
+ * $Header: /private-cvsroot/simulation/mrisim/src/mrisim/mriscanner.h,v 1.2 2008-11-06 10:58:23 rotor Exp $
  * $Log: mriscanner.h,v $
- * Revision 1.1  2003-05-30 16:43:11  bert
+ * Revision 1.2  2008-11-06 10:58:23  rotor
+ *  * fixed includes for iostream and friends
+ *  * updated for new release (1.0.2)
+ *
+ * Revision 1.1  2003/05/30 16:43:11  bert
  * Initial checkin, mrisim 3.1 from Remi Kwan's home directory
  *
  * Revision 3.1  1996/07/19  15:57:09  rkwan
@@ -34,9 +38,11 @@
  *
  *========================================================================*/
 
-#include <iostream.h>
+#include <iostream>
 #include "phantom.h"
 #include "rf_coil.h"
+
+using namespace std;
 
 #include <minc/mriimage.h>
 #include <minc/mrimatrix.h>

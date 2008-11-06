@@ -14,9 +14,13 @@
  *
  *****************************************************************************/
 
-/* $Header: /private-cvsroot/simulation/mrisim/src/signal/tissue.h,v 1.1 2003-05-30 16:43:14 bert Exp $
+/* $Header: /private-cvsroot/simulation/mrisim/src/signal/tissue.h,v 1.2 2008-11-06 10:58:23 rotor Exp $
  * $Log: tissue.h,v $
- * Revision 1.1  2003-05-30 16:43:14  bert
+ * Revision 1.2  2008-11-06 10:58:23  rotor
+ *  * fixed includes for iostream and friends
+ *  * updated for new release (1.0.2)
+ *
+ * Revision 1.1  2003/05/30 16:43:14  bert
  * Initial checkin, mrisim 3.1 from Remi Kwan's home directory
  *
  * Revision 2.3  1995/12/11  15:08:17  rkwan
@@ -29,8 +33,10 @@
 
 #include <mrisim/mrisim.h>
 #include <minc/mristring.h>
-#include <iostream.h>
-#include <iomanip.h>
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
 
 /*****************************************************************************
  * Tissue Class

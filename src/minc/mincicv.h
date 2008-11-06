@@ -12,9 +12,13 @@
 //==========================================================================
 
 /*==========================================================================
- * $Header: /private-cvsroot/simulation/mrisim/src/minc/mincicv.h,v 1.1 2003-05-30 16:43:09 bert Exp $
+ * $Header: /private-cvsroot/simulation/mrisim/src/minc/mincicv.h,v 1.2 2008-11-06 10:58:23 rotor Exp $
  * $Log: mincicv.h,v $
- * Revision 1.1  2003-05-30 16:43:09  bert
+ * Revision 1.2  2008-11-06 10:58:23  rotor
+ *  * fixed includes for iostream and friends
+ *  * updated for new release (1.0.2)
+ *
+ * Revision 1.1  2003/05/30 16:43:09  bert
  * Initial checkin, mrisim 3.1 from Remi Kwan's home directory
  *
  * Revision 2.5  1996/05/29  16:27:44  rkwan
@@ -28,10 +32,12 @@
  *
  *=========================================================================*/
 
-#include <iostream.h>
+#include <iostream>
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+using namespace std;
 
 extern "C" {
 #include <minc.h>

@@ -1,3 +1,6 @@
+2008-11-06  Andrew L Janke <a.janke@gmail.com>
+	* updated includes to more std syntax and fixed namespace problems
+
 2006-11-07	Andrew L Janke	<a.janke@gmail.com>
 	* Added epm-header for binary build
 

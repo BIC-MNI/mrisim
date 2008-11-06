@@ -12,9 +12,13 @@
 //==========================================================================
 
 /*==========================================================================
- * $Header: /private-cvsroot/simulation/mrisim/src/mrisim/mrisim.h,v 1.1 2003-05-30 16:43:11 bert Exp $
+ * $Header: /private-cvsroot/simulation/mrisim/src/mrisim/mrisim.h,v 1.2 2008-11-06 10:58:23 rotor Exp $
  * $Log: mrisim.h,v $
- * Revision 1.1  2003-05-30 16:43:11  bert
+ * Revision 1.2  2008-11-06 10:58:23  rotor
+ *  * fixed includes for iostream and friends
+ *  * updated for new release (1.0.2)
+ *
+ * Revision 1.1  2003/05/30 16:43:11  bert
  * Initial checkin, mrisim 3.1 from Remi Kwan's home directory
  *
  * Revision 2.5  1996/05/29  16:13:56  rkwan
@@ -28,7 +32,9 @@
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <iostream.h>
+#include <iostream>
+
+using namespace std;
 
 /*****************************************************************************
  * Constants

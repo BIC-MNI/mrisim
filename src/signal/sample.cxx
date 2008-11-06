@@ -11,9 +11,13 @@
  *
  *****************************************************************************/
 
-// $Header: /private-cvsroot/simulation/mrisim/src/signal/sample.cxx,v 1.1 2003-05-30 16:43:14 bert Exp $
+// $Header: /private-cvsroot/simulation/mrisim/src/signal/sample.cxx,v 1.2 2008-11-06 10:58:23 rotor Exp $
 // $Log: sample.cxx,v $
-// Revision 1.1  2003-05-30 16:43:14  bert
+// Revision 1.2  2008-11-06 10:58:23  rotor
+//  * fixed includes for iostream and friends
+//  * updated for new release (1.0.2)
+//
+// Revision 1.1  2003/05/30 16:43:14  bert
 // Initial checkin, mrisim 3.1 from Remi Kwan's home directory
 //
 // Revision 2.3  1996/01/17  17:57:21  rkwan
@@ -28,8 +32,8 @@
 
 #include "sample.h"
 #include <stdio.h> 
-#include <iostream.h>
-#include <iomanip.h>
+#include <iostream>
+#include <iomanip>
 
 /*****************************************************************************
  * Sample Class

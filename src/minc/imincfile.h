@@ -12,9 +12,13 @@
 //==========================================================================
 
 /*==========================================================================
- * $Header: /private-cvsroot/simulation/mrisim/src/minc/imincfile.h,v 1.2 2004-08-10 15:19:59 bert Exp $
+ * $Header: /private-cvsroot/simulation/mrisim/src/minc/imincfile.h,v 1.3 2008-11-06 10:58:22 rotor Exp $
  * $Log: imincfile.h,v $
- * Revision 1.2  2004-08-10 15:19:59  bert
+ * Revision 1.3  2008-11-06 10:58:22  rotor
+ *  * fixed includes for iostream and friends
+ *  * updated for new release (1.0.2)
+ *
+ * Revision 1.2  2004/08/10 15:19:59  bert
  * Add 'class' keyword
  *
  * Revision 1.1  2003/05/30 16:43:08  bert
@@ -28,7 +32,7 @@
  *
  *========================================================================*/
 
-#include <iostream.h>
+#include <iostream>
 #include "mincfile.h"
 
 class O_MINC_File;
