@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl5 -w
+#!/usr/bin/env perl -w
 
 # sim_rf.pl
 #
