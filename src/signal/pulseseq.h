@@ -54,9 +54,9 @@ enum Partial_Fourier_Type {NO_PARTIAL_FOURIER = 0, HALF_FOURIER = 1,
 #define NO  FALSE
 #endif
 
-#ifndef ON
-#define ON  TRUE
-#define OFF FALSE
+#ifndef TRUE
+#define TRUE  TRUE
+#define FALSE FALSE
 #endif
 
 #ifndef UNDEFINED
@@ -158,7 +158,7 @@ class Pulse_Sequence {
 
    protected:
 
-      // --- Volume dimensions --- //
+      // --- VIO_Volume dimensions --- //
 
       double               _FOV[3];
       int                  _matrix_size[3];
@@ -433,14 +433,14 @@ int Pulse_Sequence::get_foldover_direction(void) const {
 
 //--------------------------------------------------------------------------
 // Pulse_Sequence::set_foldover_suppression
-// Turns ON or OFF foldover suppression.
+// Turns TRUE or FALSE foldover suppression.
 //--------------------------------------------------------------------------
 
 inline 
 void Pulse_Sequence::set_foldover_suppression(int on) {
 
 #ifdef DEBUG
-   assert(on == ON || on == OFF);
+   assert(on == TRUE || on == FALSE);
 #endif
 
    _foldover_suppression = on;

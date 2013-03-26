@@ -137,7 +137,7 @@ class Phantom {
   
       inline Pulse_Sequence &get_current_pulse_sequence(void) const;
 
-      // --- Volume convenience functions --- //
+      // --- VIO_Volume convenience functions --- //
       virtual int    is_same_slice_size_as(const MRI_Matrix& mat) const = 0;
       virtual int    get_nrows(void) const                              = 0;
       virtual int    get_ncols(void) const                              = 0;

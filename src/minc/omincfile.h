@@ -58,7 +58,7 @@ class O_MINC_File : virtual public MINC_File {
       int save_slice(int slice_num, void *slice);
       int save_slice(int slice_num, MRI_Image& image);
 
-      // Volume information routines
+      // VIO_Volume information routines
       void set_volume_info(const I_MINC_File& ifile, 
                            const char *argstring = NULL);
       void set_volume_info(int cdfid, const Volume_Info &volume_info,

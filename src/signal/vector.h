@@ -5,7 +5,7 @@
  * 
  * VECTOR.H
  *
- * Vector classes
+ * VIO_Vector classes
  *
  * R. Kwan
  * August 8, 1995
@@ -35,30 +35,30 @@
  *****************************************************************************/
 
 enum Axis {X_AXIS=0, Y_AXIS=1, Z_AXIS=2};   // axis specifier for 3D vectors
-class Vector;
-extern double abs(Vector&);
+class VIO_Vector;
+extern double abs(VIO_Vector&);
 
 /*****************************************************************************
- * Vector Class
+ * VIO_Vector Class
  * Defines a generalized N-dimensional vector object and basic operations
  * on vectors.
  *****************************************************************************/
 
-class Vector {
+class VIO_Vector {
    public:
-      Vector(int len);                       // constructors
-      Vector(int len, double data[]);
-      Vector(int len, double a);
-      Vector(const Vector& v);               // copy constructor
+      VIO_Vector(int len);                       // constructors
+      VIO_Vector(int len, double data[]);
+      VIO_Vector(int len, double a);
+      VIO_Vector(const VIO_Vector& v);               // copy constructor
 
-      virtual ~Vector();                     // destructor
+      virtual ~VIO_Vector();                     // destructor
 
       double& operator[](int index);         // access indiv. vector elements
      
       void print(ostream& output) const;     // output functions
 
-      friend double abs(Vector& v);
-      friend int    dim(Vector& v);
+      friend double abs(VIO_Vector& v);
+      friend int    dim(VIO_Vector& v);
 
    protected:
       double  *_vector;                      // storage for vector elements
@@ -68,10 +68,10 @@ class Vector {
 
 /*****************************************************************************
  * Vector_3D Class
- * 3D Euclidean space vector object.  Inherits from Vector class.
+ * 3D Euclidean space vector object.  Inherits from VIO_Vector class.
  *****************************************************************************/
 
-class Vector_3D : public Vector {
+class Vector_3D : public VIO_Vector {
    public:
       Vector_3D();                           // constructors
       Vector_3D(double data[]);

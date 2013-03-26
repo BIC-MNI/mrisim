@@ -49,7 +49,7 @@
 #include "time_stamp.h"
 
 #ifndef lint
-static char rcsid[]="$Header: /private-cvsroot/simulation/mrisim/src/minc/time_stamp.c,v 1.1 2003-05-30 16:43:10 bert Exp $";
+static char rcsid[]="$Header: /static-cvsroot/simulation/mrisim/src/minc/time_stamp.c,v 1.1 2003-05-30 16:43:10 bert Exp $";
 #endif
 
 /* ----------------------------- MNI Header -----------------------------------

@@ -50,7 +50,7 @@ class MRI_Image : public MRI_Short_Matrix {
 
       virtual ~MRI_Image();
 
-      // --- Real range access functions --- //
+      // --- VIO_Real range access functions --- //
 
       inline double get_real_minimum(void) const;
       inline double get_real_maximum(void) const;

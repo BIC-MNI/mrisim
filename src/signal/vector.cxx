@@ -2,7 +2,7 @@
  * 
  * VECTOR.CXX
  *
- * Vector class member functions
+ * VIO_Vector class member functions
  *
  * R. Kwan
  * August 8, 1995
@@ -33,15 +33,15 @@
 #include "vector.h"
 
 /*****************************************************************************
- * Vector Class Methods
+ * VIO_Vector Class Methods
  *****************************************************************************/
 
 /*****************************************************************************
- * Vector Constructor
+ * VIO_Vector Constructor
  *****************************************************************************/
 
 
-Vector::Vector(int len){
+VIO_Vector::VIO_Vector(int len){
    int i;
 
    _length = len;
@@ -52,7 +52,7 @@ Vector::Vector(int len){
    }
 }
 
-Vector::Vector(int len, double data[]){
+VIO_Vector::VIO_Vector(int len, double data[]){
    int i;
    
    _length = len;
@@ -63,7 +63,7 @@ Vector::Vector(int len, double data[]){
    }
 }
 
-Vector::Vector(int len, double a){
+VIO_Vector::VIO_Vector(int len, double a){
    int i;
    
    _length = len;
@@ -74,10 +74,10 @@ Vector::Vector(int len, double a){
 }
 
 /*****************************************************************************
- * Vector copy constructor
+ * VIO_Vector copy constructor
  *****************************************************************************/
 
-Vector::Vector(const Vector& v){
+VIO_Vector::VIO_Vector(const VIO_Vector& v){
    int i;
 
    _length = v._length;
@@ -89,19 +89,19 @@ Vector::Vector(const Vector& v){
 }
 
 /*****************************************************************************
- * Vector Destructor
+ * VIO_Vector Destructor
  *****************************************************************************/
 
-Vector::~Vector(){
+VIO_Vector::~VIO_Vector(){
    delete[] _vector;
 }
 
 /*****************************************************************************
- * Vector::operator[]
+ * VIO_Vector::operator[]
  * Allows access to an element of the vector.
  *****************************************************************************/
   
-double& Vector::operator[](int index){
+double& VIO_Vector::operator[](int index){
    if (index > _length-1)
       return _vector[_length-1];
    else
@@ -109,11 +109,11 @@ double& Vector::operator[](int index){
 }
 
 /*****************************************************************************
- * Vector::print
+ * VIO_Vector::print
  * Prints a vector
  *****************************************************************************/
 
-void Vector::print(ostream& output) const {
+void VIO_Vector::print(ostream& output) const {
    int i;
 
    output << "[";
@@ -124,15 +124,15 @@ void Vector::print(ostream& output) const {
 }
 
 /*****************************************************************************
- * Vector friend functions
+ * VIO_Vector friend functions
  *****************************************************************************/
 
 /*****************************************************************************
- * abs(Vector&)
+ * abs(VIO_Vector&)
  * Returns the absolute value of the vector
  *****************************************************************************/
 
-double abs(Vector& v){
+double abs(VIO_Vector& v){
    int i;
    double modulus;
 
@@ -143,11 +143,11 @@ double abs(Vector& v){
 }
 
 /*****************************************************************************
- * dim(Vector&)
+ * dim(VIO_Vector&)
  * Returns the dimension of the vector
  *****************************************************************************/
 
-int dim(Vector& v){
+int dim(VIO_Vector& v){
    return v._length;
 }
 
@@ -159,19 +159,19 @@ int dim(Vector& v){
  * Vector_3D constructor
  *****************************************************************************/
 
-Vector_3D::Vector_3D() : Vector(3) { }
+Vector_3D::Vector_3D() : VIO_Vector(3) { }
 
-Vector_3D::Vector_3D(double data[]) : Vector(3, data) { }
+Vector_3D::Vector_3D(double data[]) : VIO_Vector(3, data) { }
 
-Vector_3D::Vector_3D(double x, double y, double z) : Vector(3){
+Vector_3D::Vector_3D(double x, double y, double z) : VIO_Vector(3){
    _vector[X_AXIS] = x;
    _vector[Y_AXIS] = y;
    _vector[Z_AXIS] = z;
 }
 
-Vector_3D::Vector_3D(double a) : Vector(3, a) { }
+Vector_3D::Vector_3D(double a) : VIO_Vector(3, a) { }
 
-Vector_3D::Vector_3D(const Vector_3D& v) : Vector(3){
+Vector_3D::Vector_3D(const Vector_3D& v) : VIO_Vector(3){
    _vector[X_AXIS] = v._vector[X_AXIS];
    _vector[Y_AXIS] = v._vector[Y_AXIS];
    _vector[Z_AXIS] = v._vector[Z_AXIS];
