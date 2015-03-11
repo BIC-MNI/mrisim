@@ -140,8 +140,8 @@ Phantom::~Phantom(){
 
    if (row_chirp != NULL) delete row_chirp;
    if (col_chirp != NULL) delete col_chirp;
-   if (row_weight != NULL) delete row_weight;
-   if (col_weight != NULL) delete col_weight;
+   if (row_weight != NULL) delete [] row_weight;
+   if (col_weight != NULL) delete [] col_weight;
    if (tmp_slice != NULL) delete tmp_slice;
 
 }
