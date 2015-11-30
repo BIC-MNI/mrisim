@@ -37,12 +37,12 @@
 
 MINC_ICV::MINC_ICV() {
 
-   int oldncopts = ncopts;
-   ncopts = 0;
+   int oldncopts =get_ncopts();
+   set_ncopts(0);
    if ((_icvid = miicv_create()) == MI_ERROR){
       cerr << "MINC_ICV::MINC_ICV error creating icv." << endl;
    }
-   ncopts = oldncopts;
+   set_ncopts(oldncopts);
 
 }
 

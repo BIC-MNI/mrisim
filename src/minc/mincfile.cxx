@@ -35,7 +35,7 @@
 // Stores error checking option.
 //--------------------------------------------------------------------------
 
-int MINC_File::_ncoldopts = ncopts;
+int MINC_File::_ncoldopts =get_ncopts();
 
 //--------------------------------------------------------------------------
 // MINC_File::type 
