@@ -45,7 +45,7 @@ class Fuzzy_Label_Phantom : virtual public Phantom {
                                  const char *path);
       void close_label_files(void);
 
-      // --- VIO_Volume convenience functions --- //
+      // --- Volume convenience functions --- //
       inline int    is_same_slice_size_as(const MRI_Matrix& mat) const;
       inline int    get_nrows(void) const;
       inline int    get_ncols(void) const;
@@ -176,7 +176,7 @@ double Fuzzy_Label_Phantom::get_voxel_start(int n) const {
 
 inline
 void Fuzzy_Label_Phantom::display_volume_info(ostream& stream) const {
-   stream << "Phantom Labelled VIO_Volume Information:" << endl;
+   stream << "Phantom Labelled Volume Information:" << endl;
    stream << "------------------------------------" << endl << endl;
    _tissue_label_file[0].display_volume_info(stream);
 }

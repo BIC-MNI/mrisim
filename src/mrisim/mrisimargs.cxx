@@ -244,6 +244,7 @@ mrisimArgs::mrisimArgs(int argc, char *argv[]){
 
 mrisimArgs::~mrisimArgs() {
    delete_fuzzy_list();
+   free(fuzzy_specifier_string);
 }
 
 //------------------------------------------------------------------------- 
@@ -289,8 +290,7 @@ int parse_optional_string_argument(char *dst, char */*key*/,
    // so some funky casting is required.
 
    if ((nextArg == NULL) || (nextArg[0] == '-')) {
-      *(char **)dst = new char;
-      (*(char **)dst)[0] = '\0';
+      *(char **)dst = strdup("");
       next_arg_used = 0;
    } else {
       *(char **)dst = strdup(nextArg);
@@ -316,7 +316,7 @@ void mrisimArgs::delete_specifier_list(Fuzzy_Specifier *head) {
 }
 
 //------------------------------------------------------------------------- 
-// mrisimArgs::split_string
+// split_string
 // Splits a string into two parts, before and after the first occurence
 // of the delimiter character.
 // If the delimiter is found, returns TRUE, replaces the delimiter with
@@ -326,8 +326,9 @@ void mrisimArgs::delete_specifier_list(Fuzzy_Specifier *head) {
 // to point to the end-of-string character '\0'. 
 //------------------------------------------------------------------------- 
 
-int mrisimArgs::split_string(char *string, char delimiter, 
-                             char **second_string) {
+static int 
+split_string(char *string, char delimiter, char **second_string)
+{
    int  found = FALSE;
    char ch;
 
@@ -346,7 +347,6 @@ int mrisimArgs::split_string(char *string, char delimiter,
    }
 
    return found;
-
 }
 
 //------------------------------------------------------------------------- 
@@ -359,7 +359,9 @@ int mrisimArgs::split_string(char *string, char delimiter,
 // containing the label formed from the valid digit characters.
 //------------------------------------------------------------------------- 
 
-int mrisimArgs::scan_label(const char *string, int &label) {
+static int
+scan_label(const char *string, int &label)
+{
    const char *cptr = string;
  
    label = 0;
@@ -384,83 +386,104 @@ int mrisimArgs::scan_label(const char *string, int &label) {
 // returned, otherwise TRUE is returned.
 //------------------------------------------------------------------------- 
 
-int mrisimArgs::parse_fuzzy_list(char *head, 
+int mrisimArgs::parse_fuzzy_list(char *head_str, 
                                  int &count, Fuzzy_Specifier *list) {
-   int  more_members, uses_labels, has_label, no_error = TRUE;
-   int  label;
-   char *tail, *labelstr;
+  int more_members;
+  int uses_labels;
+  int has_label;
+  int label_value;
+  char *tail_str, *label_str;
+  int saw_background = FALSE;
 
-   count = 0;
-   more_members = split_string(head, ',', &tail);
-   uses_labels  = split_string(head, ':', &labelstr);
+  count = 0;
 
-   if (*head != '\0') {
-      if (uses_labels) {
-         if (!scan_label(labelstr,label)) {
-            cerr << "Improper label." << endl;
-            no_error = FALSE;
-         } else {
-            //cout << "Name: " << head << " Label: " << label << endl;
-            list->filename = head;
-            list->label    = label;
-            list->next     = NULL;
-            count++;
-         }
+  /* We allow an empty list. This just means that we will use the
+   * specifications found in the tissue type parameter file.
+   */
+  if (*head_str == '\0') {
+    return TRUE;
+  }
+
+  /* Otherwise, we expect to parse a list of file names, with optional
+   * tissue labels, e.g. the syntax is:
+   *
+   * fuzzy-list = labeled-list | unlabeled-list
+   *   labeled-list = <filename>:<label> { ',' labeled-list }
+   * OR
+   *   unlabeled-list = <filename> { ',' unlabeled-list }
+   */
+  do {
+    more_members = split_string(head_str, ',', &tail_str);
+    has_label = split_string(head_str, ':', &label_str);
+    if (count == 0) {
+      /* If there is a label on the first list entry, there must be a label
+       * on all subsequent list entries.
+       */
+      uses_labels = has_label;
+    }
+    else if (has_label != uses_labels) {
+      /* Prohibit inconsistent use of labels.
+       */
+      if (has_label) {
+        cerr << "Label specifier ':' not expected." << endl;
       } else {
-         //cout << "Name: " << head << endl;
-         list->filename = head;
-         list->label    = -1;
-         list->next     = NULL;
-         count++;
+        cerr << "Label specifier ':' expected." << endl;
       }
-   }
+      return FALSE;
+    }
 
-   while (more_members && no_error) {
-      head = tail;
-      more_members = split_string(head, ',', &tail);
-      if (*head == '\0') {
-         cerr << "Empty list member not allowed." << endl;
-         no_error = FALSE;
-      } else {
-         has_label = split_string(head, ':', &labelstr);
-         if (uses_labels) {
-            if (has_label) {
-               if (!scan_label(labelstr,label)) {
-                  cerr << "Improper label specified." << endl;
-                  no_error = FALSE;
-               } else {
-                  //cout << "Name: " << head << " Label: " << label << endl;
-                  list->next = new Fuzzy_Specifier;
-                  list       = list->next;
+    if (*head_str == '\0') {
+      /* Prohibit empty filenames.
+       */
+      cerr << "Empty list member not allowed." << endl;
+      return FALSE;
+    }
 
-                  list->filename = head;
-                  list->label    = label;
-                  list->next     = NULL;
-                  count++;
-               }
-            } else {
-               cerr << "Label specifier ':' expected." << endl;
-               no_error = FALSE;
-            }
-         } else {
-            if (has_label) {
-               cerr << "Label specifier ':' not expected." << endl;
-               no_error = FALSE;
-            } else {
-               //cout << "Name: " << head << endl;
-               list->next = new Fuzzy_Specifier;
-               list       = list->next;
-
-               list->filename = head;
-               list->label    = -1;
-               list->next     = NULL;
-               count++;
-            }
-         }
+    if (has_label) {
+      /* Try to collect the label.
+       */
+      if (!scan_label(label_str, label_value)) {
+        cerr << "Improper label: '" << label_str << "'." << endl;
+        return FALSE;
       }
-   }
+      else if (label_value == 0) {
+        /* We MUST see a background (label value zero) class. Failure
+         * to specify one is an error!
+         */
+        saw_background = TRUE;
+      }
+    }
+    else {
+      label_value = -1;
+    }
 
-   return no_error;
+    /* If we are adding an element after the head, we need
+     * to extend the list.
+     */
+    if (count > 0) {
+      list->next = new Fuzzy_Specifier;
+      list = list->next;
+    }
 
+    /* Initialize the list element.
+     */
+    list->filename = strdup(head_str);
+    list->label    = label_value;
+    list->next     = NULL;
+
+    /* Set up for the next iteration, if any.
+     */
+    count++;
+    head_str = tail_str;
+
+  } while (more_members);
+
+  /* Check that we have specified the background tissue. 
+   */
+  if (uses_labels && !saw_background) {
+    cerr << "Must specify background tissue (label 0)" << endl;
+    return FALSE;
+  }
+  return TRUE;
 }
 

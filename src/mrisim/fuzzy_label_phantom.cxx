@@ -121,6 +121,12 @@ void Fuzzy_Label_Phantom::_load_label_slice(int slice_num,
 #endif
 
    unsigned int tissue_index = Phantom::get_tissue_index(tissue_label); 
-   _tissue_label_file[tissue_index].load_slice(slice_num, (void *)label_slice);
+   int r = _tissue_label_file[tissue_index].load_slice(slice_num, (void *)label_slice);
+   if (r < 0) {
+     cerr << endl << "Failed to load slice #" << slice_num;
+     cerr << " for tissue label " << (int)tissue_label << "." << endl;
+     cerr << "You may have omitted the input file for that tissue type." << endl;
+     exit(EXIT_FAILURE);
+   }
 
 }

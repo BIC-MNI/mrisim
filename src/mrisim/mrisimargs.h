@@ -55,7 +55,7 @@ extern "C" {
 struct Fuzzy_Specifier {
    Fuzzy_Specifier() : filename(NULL), label(-1), next(NULL) {}
    ~Fuzzy_Specifier() {
-      if (filename != NULL) delete[] filename;
+      if (filename != NULL) free(filename);
    }
 
    char *filename; 
@@ -139,11 +139,9 @@ class mrisimArgs {
 
       // --- Fuzzy phantom specifier list parsing --- //
 
-      int parse_fuzzy_list(char *head, int &count, Fuzzy_Specifier *list);
-      int split_string(char *string, char delimiter, char **second_string);
-      int scan_label(const char *string, int &label);
+      static int parse_fuzzy_list(char *head, int &count, Fuzzy_Specifier *list);
+      static void delete_specifier_list(Fuzzy_Specifier *list);
 
-      void delete_specifier_list(Fuzzy_Specifier *head);
 };
 
 //--------------------------------------------------------------------------
