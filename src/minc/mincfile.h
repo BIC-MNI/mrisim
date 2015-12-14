@@ -253,7 +253,7 @@ int MINC_File::has_ICV_attached(void) const {
 
 inline
 void MINC_File::set_error_on(void) {
-   ncopts = _ncoldopts;
+   set_ncopts(_ncoldopts);
 }
 
 //--------------------------------------------------------------------------
@@ -263,8 +263,8 @@ void MINC_File::set_error_on(void) {
 
 inline
 void MINC_File::set_error_off(void) {
-   _ncoldopts = ncopts;
-   ncopts = 0;
+   _ncoldopts =get_ncopts();
+   set_ncopts(0);
 }
 
 //--------------------------------------------------------------------------
@@ -274,8 +274,8 @@ void MINC_File::set_error_off(void) {
 
 inline
 void MINC_File::set_full_error(void) {
-   _ncoldopts = ncopts;
-   ncopts = NC_VERBOSE | NC_FATAL;
+   _ncoldopts =get_ncopts();
+   set_ncopts(NC_VERBOSE | NC_FATAL);
 }
 
 //--------------------------------------------------------------------------
@@ -285,8 +285,8 @@ void MINC_File::set_full_error(void) {
 
 inline 
 void MINC_File::set_verbose_error(void) {
-   _ncoldopts = ncopts;
-   ncopts = ncopts | NC_VERBOSE;
+   _ncoldopts =get_ncopts();
+   set_ncopts(ncopts | NC_VERBOSE);
 }
 
 //--------------------------------------------------------------------------
@@ -296,8 +296,8 @@ void MINC_File::set_verbose_error(void) {
 
 inline
 void MINC_File::set_fatal_error(void) {
-   _ncoldopts = ncopts;
-   ncopts = ncopts | NC_FATAL;
+   _ncoldopts =get_ncopts();
+   set_ncopts(ncopts | NC_FATAL);
 }
 
 //--------------------------------------------------------------------------
