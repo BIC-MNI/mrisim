@@ -53,10 +53,10 @@ char *MINC_File::type[] = {
 
 double MINC_File::default_min[][2] = {
       0.0, 0.0,
-      0.0, SCHAR_MIN,
+      0.0, (double)SCHAR_MIN,
       0.0, 0.0,
-      0.0, SHRT_MIN,
-      0.0, LONG_MIN,
+      0.0, (double)SHRT_MIN,
+      0.0, (double)LONG_MIN,
       0.0, 0.0,
       0.0, 0.0 };
 
@@ -67,10 +67,10 @@ double MINC_File::default_min[][2] = {
 
 double MINC_File::default_max[][2] = {
       0.0, 0.0,
-      UCHAR_MAX, SCHAR_MAX,
+      (double)UCHAR_MAX, (double)SCHAR_MAX,
       0.0, 0.0,
-      USHRT_MAX, SHRT_MAX,
-      ULONG_MAX, LONG_MAX,
+      (double)USHRT_MAX, (double)SHRT_MAX,
+      (double)ULONG_MAX, (double)LONG_MAX,
       1.0, 1.0,
       1.0, 1.0 };
 
