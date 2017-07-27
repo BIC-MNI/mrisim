@@ -11,6 +11,9 @@
 //==========================================================================
 // $Header: /private-cvsroot/simulation/mrisim/src/mrisim/mrisim_main.cxx,v 1.3 2008-11-06 10:58:23 rotor Exp $
 // $Log: mrisim_main.cxx,v $
+// Revision 1.4  2017-04-03 16:00:00 llewis
+//  * added hires parameter allowances
+//
 // Revision 1.3  2008-11-06 10:58:23  rotor
 //  * fixed includes for iostream and friends
 //  * updated for new release (1.0.2)
@@ -529,10 +532,10 @@ RF_Coil *make_coil(const mrisimArgs& args) {
    }
 
    paramfile.getfield(reference_thickness);
-   if ((reference_thickness < 0.50 || reference_thickness > 320.00) &&
+   if ((reference_thickness < 0.0001 || reference_thickness > 320.00) &&
        (reference_thickness != 0.0))  {
       cerr << "Reference slice thickness " << reference_thickness
-           << " is out of range 0.50 - 320.00" << endl;
+           << " is out of range 0.0001 - 320.00" << endl;
       status = FALSE;
    }
 
@@ -709,23 +712,23 @@ int apply_pulse_sequence(const mrisimArgs &args, MRI_Scanner &scanner) {
    }
 
    paramfile.getfield(number_of_slices);
-   if (number_of_slices < 0 || number_of_slices > 256) {
+   if (number_of_slices < 0 || number_of_slices > 1000000) {
       cerr << "Number of slices " << number_of_slices
-           << " is out of range: 1 - 256." << endl;
+           << " is out of range: 1 - 1000000." << endl;
       status = FALSE;
    }
 
    paramfile.getfield(slice_thickness);
-   if (slice_thickness < 0.50 || slice_thickness > 320.0) {
+   if (slice_thickness < 0.0001 || slice_thickness > 320.0) {
       cerr << "Slice thickness " << slice_thickness
-           << " is out of range: 0.50 - 320.00." << endl;
+           << " is out of range: 0.0001 - 320.00." << endl;
       status = FALSE;
    }
 
    paramfile.getfield(slice_separation);
-   if (slice_separation < 0.25 || slice_separation > 320.0) {
+   if (slice_separation < 0.0001 || slice_separation > 320.0) {
       cerr << "Slice separation " << slice_separation
-           << " is out of range: 0.25 - 320.00." << endl;
+           << " is out of range: 0.0001 - 320.00." << endl;
       status = FALSE;
    }
 
@@ -852,19 +855,19 @@ int apply_pulse_sequence(const mrisimArgs &args, MRI_Scanner &scanner) {
    }
 
    paramfile.getfield(scan_matrix);
-   if ((scan_matrix != 64)  && (scan_matrix != 128) && 
-       (scan_matrix != 256) && (scan_matrix != 512)){   
+   if ((scan_matrix != 64)  && (scan_matrix != 128) && (scan_matrix != 256) && 
+       (scan_matrix != 512) && (scan_matrix != 1024) && (scan_matrix != 2048) && (scan_matrix != 4096) && (scan_matrix != 8192)){   
       cerr << "Invalid scan matrix: " << scan_matrix << endl;
-      cerr << "Scan matrix must be one of: 64, 128, 256, 512." << endl;
+      cerr << "Scan matrix must be one of: 64, 128, 256, 512, 1024, 2048, 4096, 8192." << endl;
       status = FALSE;
    }
 
    paramfile.getfield(reconstruction_matrix);
-   if ((reconstruction_matrix != 64)  && (reconstruction_matrix != 128) && 
-       (reconstruction_matrix != 256) && (reconstruction_matrix != 512)){   
+   if ((reconstruction_matrix != 64)  && (reconstruction_matrix != 128) && (reconstruction_matrix != 256) &&
+       (reconstruction_matrix != 512) && (reconstruction_matrix != 1024) && (reconstruction_matrix != 2048) && (reconstruction_matrix != 4096) && (reconstruction_matrix != 8192)){   
       cerr << "Invalid reconstruction matrix: " << reconstruction_matrix 
            << endl;
-      cerr << "Reconstruction matrix must be one of: 64, 128, 256, 512." 
+      cerr << "Reconstruction matrix must be one of: 64, 128, 256, 512, 1024, 2048, 4096, 8192." 
            << endl;
       status = FALSE;
    }
@@ -1054,8 +1057,12 @@ int apply_pulse_sequence(const mrisimArgs &args, MRI_Scanner &scanner) {
       if ((args.matrix_size != 64) && 
           (args.matrix_size != 128) &&
           (args.matrix_size != 256) &&
-          (args.matrix_size != 512)) {
-         cerr << "Matrix size must be one of 64,128, 256, or 512." << endl;
+          (args.matrix_size != 512) &&
+          (args.matrix_size != 1024) &&
+          (args.matrix_size != 2048) &&
+          (args.matrix_size != 4096) &&
+          (args.matrix_size != 8192)) {
+         cerr << "Matrix size must be one of 64, 128, 256, 512, 1024, 2048, 4096, or 8192." << endl;
          cerr << "Using default: " << scan_matrix << endl;
       } else {
          scan_matrix = args.matrix_size;
@@ -1076,8 +1083,12 @@ int apply_pulse_sequence(const mrisimArgs &args, MRI_Scanner &scanner) {
       if ((args.recon_size != 64) && 
           (args.recon_size != 128) &&
           (args.recon_size != 256) &&
-          (args.recon_size != 512)) {
-         cerr << "Reconstruction matrix must be one of 64,128, 256, or 512." 
+          (args.recon_size != 512) &&
+          (args.recon_size != 1024) &&
+          (args.recon_size != 2048) &&
+          (args.recon_size != 4096) &&
+          (args.recon_size != 8192)) {
+         cerr << "Reconstruction matrix must be one of 64, 128, 256, 512, 1024, 2048, 4096, or 8192.." 
               << endl;
          cerr << "Using default: " << reconstruction_matrix << endl;
       } else {
