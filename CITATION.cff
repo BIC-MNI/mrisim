@@ -1,0 +1,73 @@
+# Citation metadata for mrisim (Citation File Format, https://citation-file-format.github.io/).
+# The author list comes from the commit history and from the history comments in the files.
+
+cff-version: 1.2.0
+title: mrisim
+message: >-
+  If you use this software, please cite it using the metadata from this file.
+  The simulator is described in the publications listed under references.
+type: software
+authors:
+  - given-names: Remi K.-S.
+    family-names: Kwan
+  - given-names: Robert D.
+    family-names: Vincent
+  - given-names: Andrew L.
+    family-names: Janke
+    orcid: "https://orcid.org/0000-0003-0547-5171"
+  - given-names: Vladimir
+    family-names: Fonov
+    email: vladimir.fonov@gmail.com
+    affiliation: McGill University
+    orcid: "https://orcid.org/0000-0003-3402-7749"
+  - given-names: Peter
+    family-names: Neelin
+  - given-names: Haz-Edine
+    family-names: Assemlal
+  - given-names: Chris
+    family-names: Cocosco
+  - given-names: Lindsay
+    family-names: Lewis
+    orcid: "https://orcid.org/0000-0002-3056-4152"
+repository-code: "https://github.com/BIC-MNI/mrisim"
+abstract: "mrisim: MRI simulator."
+keywords:
+  - MINC
+  - medical imaging
+  - MRI
+  - simulation
+license-url: "https://github.com/BIC-MNI/mrisim/blob/master/COPYING"
+references:
+  - type: article
+    title: MRI simulation-based evaluation of image-processing and classification methods
+    authors:
+      - given-names: Remi K.-S.
+        family-names: Kwan
+      - given-names: Alan C.
+        family-names: Evans
+      - given-names: G. Bruce
+        family-names: Pike
+    journal: IEEE Transactions on Medical Imaging
+    volume: 18
+    issue: 11
+    start: 1085
+    end: 1097
+    year: 1999
+    doi: "10.1109/42.816072"
+  - type: conference-paper
+    title: An extensible MRI simulator for post-processing evaluation
+    authors:
+      - given-names: Remi K.-S.
+        family-names: Kwan
+      - given-names: Alan C.
+        family-names: Evans
+      - given-names: G. Bruce
+        family-names: Pike
+    collection-title: "Visualization in Biomedical Computing (VBC '96), Lecture Notes in Computer Science"
+    volume: 1131
+    start: 135
+    end: 140
+    year: 1996
+    publisher:
+      name: Springer
+    doi: "10.1007/BFb0046947"
